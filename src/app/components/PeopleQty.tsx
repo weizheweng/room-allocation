@@ -1,5 +1,4 @@
 'use client'
-
 import { ChangeEvent, FocusEvent, MouseEvent, useState } from "react"
 
 const getQuantity = (quantity?: number, min?: number, max?: number) => {
@@ -22,7 +21,9 @@ export interface PeopleQtyProps {
   name?: string,
   value?: number,
   disabled?: boolean,
-  onChange?: (value?: number) => void,
+  incrementDisabled?: boolean,
+  decrementDisabled?: boolean,
+  onChange?: (e?: ChangeEvent<HTMLInputElement>, value?: number) => void,
   onBlur?: (e: FocusEvent<Element>) => void,
   onIncrement?: (value?: number) => void,
   onDecrement?: (value?: number) => void,
@@ -36,6 +37,8 @@ export const PeopleQty = ({
   name,
   value: valueProp,
   disabled,
+  incrementDisabled,
+  decrementDisabled,
   onChange,
   onBlur,
   onIncrement,
@@ -48,20 +51,20 @@ export const PeopleQty = ({
     const value = getQuantity(quantity + step, min, max)
     onIncrement?.(value)
     setQuantity(value)
-    onChange?.(value)
+    onChange?.(undefined, value)
   }
 
   const handleDecrement = () => {
     const value = getQuantity(quantity - step, min, max)
     onDecrement?.(value)
     setQuantity(value)
-    onChange?.(value)
+    onChange?.(undefined, value)
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = getQuantity(Number(e.target.value), min, max)
     setQuantity(value)
-    onChange?.(value)
+    onChange?.(e, value)
   }
 
   const handleClick = (e: MouseEvent<HTMLInputElement>) => {
@@ -73,7 +76,8 @@ export const PeopleQty = ({
       <button
         onClick={handleDecrement}
         className={buttonStyles}
-        disabled={quantity === min || disabled}
+        disabled={quantity === min || disabled || decrementDisabled}
+        name="decrement"
       >
         －
       </button>
@@ -86,12 +90,13 @@ export const PeopleQty = ({
         onChange={handleChange}
         onClick={handleClick}
         disabled={disabled}
-        name={name}
+        name={name || "input quantity"}
       />
       <button
         onClick={handleIncrement}
         className={buttonStyles}
-        disabled={quantity === max || disabled}
+        disabled={quantity === max || disabled || incrementDisabled}
+        name="increment"
       >
         ＋
       </button>

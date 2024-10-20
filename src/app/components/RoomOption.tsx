@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { VStack, Text, HStack, Divider,  } from "../shared-components";
 import { Guest, Room } from "../types/Rooms";
 import { PeopleQty } from "./PeopleQty";
@@ -5,18 +6,23 @@ import { PeopleQty } from "./PeopleQty";
 interface RoomOptionProps {
   room: Room,
   allocatedRoomQty: number,
+  adultQty: number,
+  childQty: number,
   adultMaxQty: number,
   childMaxQty: number
-  handleUpdateRoomQty: (room: Room, type: keyof Guest, qty: number) => void
+  handleUpdateRoomQty: (room: Room, type: keyof Guest, qty: number) => void,
+  decrementDisabled?: boolean,
+  disabled?: boolean,
 }
 
-export function RoomOption({ room, allocatedRoomQty,adultMaxQty, childMaxQty, handleUpdateRoomQty }: RoomOptionProps) {
-  const handleAdultQtyChange = (qty?: number) => {
+export function RoomOption({ room, allocatedRoomQty, adultQty, childQty, adultMaxQty, childMaxQty, handleUpdateRoomQty, decrementDisabled, disabled }: RoomOptionProps) {
+
+  const handleAdultQtyChange = (_?: ChangeEvent<HTMLInputElement>, qty?: number) => {
     if (qty === undefined) return
     handleUpdateRoomQty(room, 'adult', qty)
   }
 
-  const handleChildQtyChange = (qty?: number) => {
+  const handleChildQtyChange = (_?: ChangeEvent<HTMLInputElement>, qty?: number) => {
     if (qty === undefined) return
     handleUpdateRoomQty(room, 'child', qty)
   }
@@ -35,11 +41,11 @@ export function RoomOption({ room, allocatedRoomQty,adultMaxQty, childMaxQty, ha
             <Text className="text-xs">大人</Text>
             <Text className="text-xs text-gray-400">年齡 20+</Text>
           </VStack>
-          <PeopleQty max={adultMaxQty} onChange={handleAdultQtyChange} />
+          <PeopleQty max={adultMaxQty} value={adultQty} onChange={handleAdultQtyChange} decrementDisabled={decrementDisabled} disabled={disabled} />
         </HStack>
         <HStack className="justify-between">
           <Text className="text-xs">小孩</Text>
-          <PeopleQty max={childMaxQty} onChange={handleChildQtyChange} />
+          <PeopleQty max={childMaxQty} value={childQty} onChange={handleChildQtyChange} disabled={disabled} />
         </HStack>
       </VStack>
       <Divider />
