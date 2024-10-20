@@ -27,7 +27,7 @@ export function RoomAllocation({ guest, rooms, allocatedData: allocatedDataProps
   const canAllocate = Object.values(allocatedDataProps).every(room => !room.hasError)
 
   return (
-    <VStack className='p-3 gap-2 border-dotted border-2 border-gray-500 rounded-lg min-w-[512px] bg-white'>
+    <VStack className='p-3 gap-2 border-dotted border-2 border-gray-500 rounded-lg w-[512px] bg-white m-auto'>
       <Text className='text-lg font-bold'>
         {`住客人數：${guest.adult} 位大人，${guest.child} 位小孩 / ${rooms.length} 房`}
       </Text>
