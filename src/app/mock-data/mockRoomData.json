@@ -7,6 +7,7 @@
     },
     "rooms": [
       {
+        "id": 1,
         "name": "Room 1",
         "roomPrice": 1000,
         "adultPrice": 200,
@@ -14,6 +15,7 @@
         "capacity": 4
       },
       {
+        "id": 2,
         "name": "Room 2",
         "roomPrice": 0,
         "adultPrice": 500,
@@ -21,6 +23,7 @@
         "capacity": 4
       },
       {
+        "id": 3,
         "name": "Room 3",
         "roomPrice": 500,
         "adultPrice": 300,
@@ -37,28 +40,32 @@
     },
     "rooms": [
       {
-        "name": "Room 1",
+        "id": 4,
+        "name": "Room 4",
         "roomPrice": 500,
         "adultPrice": 500,
         "childPrice": 300,
         "capacity": 4
       },
       {
-        "name": "Room 2",
+        "id": 5,
+        "name": "Room 5",
         "roomPrice": 500,
         "adultPrice": 500,
         "childPrice": 300,
         "capacity": 4
       },
       {
-        "name": "Room 3",
+        "id": 6,
+        "name": "Room 6",
         "roomPrice": 0,
         "adultPrice": 500,
         "childPrice": 300,
         "capacity": 8
       },
       {
-        "name": "Room 4",
+        "id": 7,
+        "name": "Room 7",
         "roomPrice": 500,
         "adultPrice": 1000,
         "childPrice": 600,
@@ -74,21 +81,24 @@
     },
     "rooms": [
       {
-        "name": "Room 1",
+        "id": 8,
+        "name": "Room 8",
         "roomPrice": 1000,
         "adultPrice": 500,
         "childPrice": 300,
         "capacity": 2
       },
       {
-        "name": "Room 2",
+        "id": 9,
+        "name": "Room 9",
         "roomPrice": 500,
         "adultPrice": 400,
         "childPrice": 300,
         "capacity": 4
       },
       {
-        "name": "Room 3",
+        "id": 10,
+        "name": "Room 10",
         "roomPrice": 0,
         "adultPrice": 500,
         "childPrice": 300,
