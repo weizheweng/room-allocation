@@ -1,6 +1,6 @@
-import { Guest, Room } from "../types/Rooms"
+import { Guest, RoomRecord } from "../types/Rooms"
 
-export type AllocatedData = Record<string, Room & { adult?: number, child?: number }>
+export type AllocatedData = Record<string, RoomRecord>
 
 export function calculateMaxQty(roomName: string, data: AllocatedData, maxQty: number, type: keyof Guest) {
   const remainingAllocatedQty = Object.keys(data).reduce((acc, _roomName) => {
